@@ -8,5 +8,18 @@ Sunil Ojha
 
 <h1 class="text-center mt-4">This is the Django Learning</h1>
 
-{% endblock %} 
+<h2>
+    {% if form.instance.pk %}
+    Edit Tweet 
+    {% else %}
+    Create tweet
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-warning" type="submit">Submit</button>
+    </form>
+    <a href="{% url 'tweet_list' %}">Back to tweet list</a>
+</h2>
 
+{% endblock %}
